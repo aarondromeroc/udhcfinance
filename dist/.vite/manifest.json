@@ -1,6 +1,6 @@
 {
   "src/main.js": {
-    "file": "main.js",
+    "file": "assets/main.production.js",
     "isEntry": true,
     "src": "src/main.js"
   }

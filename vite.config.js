@@ -19,7 +19,7 @@ export default defineConfig({
       input: './src/main.js',
       output: {
         format: 'umd',
-        entryFileNames: 'main.js',
+        entryFileNames: 'assets/main.production.js',
         esModule: false,
         compact: true,
         globals: {
