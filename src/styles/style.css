@@ -1,0 +1,43 @@
+/* Designer CSS */
+
+
+/* Settings CSS */
+
+/* Active slide animation initial state */
+
+/* .swiper-slide {
+    opacity: .4;
+    transition: opacity 0.8s ease-out;
+}
+
+.swiper-slide .u-overflow-hidden * {
+    transform: translateY(100%);
+    transition: transform 0.4s ease-out
+}
+
+.swiper-slide .u-overflow-hidden *:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.swiper-slide .u-overflow-hidden *:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.swiper-slide button {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+} */
+
+/* Active slide animation  */
+
+/* .swiper-slide.swiper-slide-active {
+    opacity: 1;
+}
+
+.swiper-slide.swiper-slide-active button {
+    opacity: 1;
+}
+
+.swiper-slide.swiper-slide.swiper-slide-active .u-overflow-hidden * {
+    transform: translateY(0%);
+} */
