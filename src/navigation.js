@@ -36,4 +36,12 @@ function navigation() {
       }
   }
 
-  export default navigation
+  function brandClick() {
+    const homeButton = $('[href="/home"]')
+    const brand = $('.brand')
+    brand.on('click', () => {
+      homeButton.click();
+    })
+  }
+
+  export { navigation, brandClick }

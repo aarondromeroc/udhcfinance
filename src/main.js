@@ -4,7 +4,7 @@ import SplitType from "split-type";
 import * as THREE from 'three'
 import { team } from "./team";
 import { myThree } from "./scene";
-import navigation from "./navigation";
+import {navigation, brandClick} from "./navigation";
 
 /**
  * Global
@@ -200,6 +200,7 @@ barba.hooks.once(() => {
     splitText();
     myThree();
     navigation();
+    brandClick();
     window.Webflow && window.Webflow.destroy();
     window.Webflow && window.Webflow.ready();
     window.Webflow && window.Webflow.require('ix2').init();
