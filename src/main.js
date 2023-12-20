@@ -62,20 +62,13 @@ function aboutPageLoad() {
 }
 
 //Focus
-
 function focusPageLoad() {
-    gsap.to('.line', {yPercent: -100, duration: 0.001})
-}
-
-function focusPageHover() {
     $('.details_block').each(function () {
-        $(this).on('mouseenter', () => {
-            gsap.to($(this).find('.line'), {
-                yPercent: 0,
-                duration: 0.8,
-                stagger: 0.04,
-                ease: 'power1.out'
-            });
+        gsap.to($(this).find('.line'), {
+            yPercent: 0,
+            duration: 0.8,
+            stagger: 0.04,
+            ease: 'power1.out'
         });
     });
 }
@@ -151,11 +144,9 @@ barba.init({
         },
         once() {
             focusPageLoad();
-            focusPageHover();
         },
         enter() {
             focusPageLoad();
-            focusPageHover();
         }
     }, {
         name: 'portfolio',
