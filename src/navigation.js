@@ -41,8 +41,7 @@ function navigation() {
     const brand = $('.brand');
 
     if (homeButton.length > 0) {
-        brand.on('click', (event) => {
-            event.preventDefault(); // Prevents the default behavior of the anchor link
+        brand.on('click', () => {
             homeButton.click();
         });
     } else {
