@@ -37,11 +37,17 @@ function navigation() {
   }
 
   function brandClick() {
-    const homeButton = $('[href="/home"]')
-    const brand = $('.brand')
-    brand.on('click', () => {
-      homeButton.click();
-    })
-  }
+    const homeButton = $('[href="/home"]');
+    const brand = $('.brand');
+
+    if (homeButton.length > 0) {
+        brand.on('click', (event) => {
+            event.preventDefault(); // Prevents the default behavior of the anchor link
+            homeButton.click();
+        });
+    } else {
+        console.error('Home button not found!');
+    }
+}
 
   export { navigation, brandClick }
