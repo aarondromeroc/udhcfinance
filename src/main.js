@@ -65,11 +65,11 @@ function aboutPageLoad() {
 function focusPageLoad() {
     $('.details_block').each(function () {
         gsap.from($(this).find('.line'), {
-            yPercent: 0,
+            yPercent: 100,
             duration: 0.8,
-            stagger: 0.04,
+            stagger: 0.2,
             ease: 'power1.out'
-        });
+        },'<+=0.5');
     });
 }
 
