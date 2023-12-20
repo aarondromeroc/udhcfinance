@@ -64,7 +64,7 @@ function aboutPageLoad() {
 //Focus
 function focusPageLoad() {
     $('.details_block').each(function () {
-        gsap.to($(this).find('.line'), {
+        gsap.from($(this).find('.line'), {
             yPercent: 0,
             duration: 0.8,
             stagger: 0.04,
