@@ -37,7 +37,7 @@ function navigation() {
   }
 
   function brandClick() {
-    const homeButton = $('[href="/home"]');
+    const homeButton = $('.nav_link.transition-1');
     const brand = $('.brand');
 
     if (homeButton.length > 0) {
