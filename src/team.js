@@ -15,7 +15,7 @@ function team() {
             slideToClickedSlide: true,
             navigation: {
                 nextEl: '.swiper-button-next',
-                prevElL: '.swiper-button-prev'
+                prevEl: '.swiper-button-prev'
             },
             breakpoints: {
                 480: {
