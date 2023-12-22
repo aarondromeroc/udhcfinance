@@ -1,4 +1,5 @@
 import Swiper from "swiper";
+import { Navigation } from "swiper/modules";
 import { gsap } from "gsap";
 import './styles/style.css'
 
@@ -7,10 +8,15 @@ function team() {
     function teamSwiper() {
     
         const swiper = new Swiper(".swiper", {
+            modules: [Navigation],
             slidesPerView: 1.25,
             centeredSlides: true,
             spaceBetween: 20,
             slideToClickedSlide: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevElL: '.swiper-button-prev'
+            },
             breakpoints: {
                 480: {
                     slidesPerView: 2,
