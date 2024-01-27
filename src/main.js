@@ -179,6 +179,17 @@ barba.init({
         enter() {
             teamPageLoad();
         }
+    },{
+        name: 'writing',
+        to: {
+            namespace: ['writing']
+        },
+        once() {
+            toFrthView();
+        },
+        enter() {
+            toFrthView();
+        }
     }],
     views: [{
         namespace: 'team',
