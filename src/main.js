@@ -190,6 +190,17 @@ barba.init({
         enter() {
             toFrthView();
         }
+    },{
+        name: 'blog-template',
+        to: {
+            namespace: ['blog-template']
+        },
+        once() {
+            toFrthView();
+        },
+        enter() {
+            toFrthView();
+        }
     }],
     views: [{
         namespace: 'team',
