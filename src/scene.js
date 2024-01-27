@@ -191,104 +191,52 @@ transitionElements1.forEach(element => {
 // Select all elements with class .transition-2
 const transitionElements2 = document.querySelectorAll(".transition-2");
 
-// Loop through each element
-transitionElements2.forEach(element => {
-  // Attach onclick event
-  element.onclick = () => {
-    // =====================
-    // Now we recalculate target X position depending on window orientation
-    let xPos = window.innerWidth / window.innerHeight;
-    xPos = Math.max(1.1, xPos);
-    xPos = Math.min(1.6, xPos);
+function toSndView() {
+  let xPos = window.innerWidth / window.innerHeight;
+  xPos = Math.max(1.1, xPos);
+  xPos = Math.min(1.6, xPos);
 
-    gsap.timeline({})
-      .to(scene.fog, {
-        duration: .5,
-        near: 1,
-      }, 0)
-      .to(helmetWrapper.position, {
-        duration: .5,
-        x: xPos,
-        y: 0
-      }, 0)
-      .to(camera.position, {
-        duration: 1.5,
-        z: 4,
-        ease: "power2.out"
-      }, 0)
-      .to(helmetWrapper.rotation, {
-        duration: 1.5,
-        x: 0,
-        y: -.4,
-        ease: "back.out(4)"
-      }, 0);
-  };
-});
+  gsap.timeline({})
+      .to(scene.fog, { duration: .5, near: 1 }, 0)
+      .to(helmetWrapper.position, { duration: .5, x: xPos, y: 0 }, 0)
+      .to(camera.position, { duration: 1.5, z: 4, ease: "power2.out" }, 0)
+      .to(helmetWrapper.rotation, { duration: 1.5, x: 0, y: -.4, ease: "back.out(4)" }, 0);
+}
+// Loop through each element
+transitionElements2.forEach(element => element.onclick = toSndView);
+
 
     // TRANSITION TO VIEW #3
     // Select all elements with class .transition-3
 const transitionElements3 = document.querySelectorAll(".transition-3");
 
+function toTrdView() {
+  gsap.timeline({})
+      .to(scene.fog, { duration: .5, near: 6 }, 0)
+      .to(helmetWrapper.position, { duration: .5, x: 0, y: 0 }, 0)
+      .to(camera.position, { duration: 1.5, z: 7, ease: "back.out(1.4)" }, 0)
+      .to(helmetWrapper.rotation, { duration: 2, x: 0, y: -.1, ease: "back.out(4)" }, 0);
+}
 // Loop through each element
-transitionElements3.forEach(element => {
-  // Attach onclick event
-  element.onclick = () => {
-    gsap.timeline({})
-      .to(scene.fog, {
-        duration: .5,
-        near: 6,
-      }, 0)
-      .to(helmetWrapper.position, {
-        duration: .5,
-        x: 0,
-        y: 0,
-      }, 0)
-      .to(camera.position, {
-        duration: 1.5,
-        z: 7,
-        ease: "back.out(1.4)"
-      }, 0)
-      .to(helmetWrapper.rotation, {
-        duration: 2,
-        x: 0,
-        y: -.1,
-        ease: "back.out(4)"
-      }, 0);
-  };
-});
+transitionElements3.forEach(element => element.onclick = toTrdView);
 
 
     // TRANSITION TO VIEW #4
 // Select all elements with class .transition-4
 const transitionElements4 = document.querySelectorAll(".transition-4");
 
-// Loop through each element
-transitionElements4.forEach(element => {
-  // Attach onclick event
-  element.onclick = () => {
-    gsap.timeline({})
-      .to(scene.fog, {
-        duration: .5,
-        near: 3,
-      }, 0)
-      .to(helmetWrapper.position, {
-        duration: 1,
-        x: 0,
-        y: 0,
-      }, 0)
-      .to(camera.position, {
-        duration: 1.4,
-        z: 10,
-        ease: "power1.inOut"
-      }, 0)
-      .to(helmetWrapper.rotation, {
-        duration: 1.5,
-        x: 0,
-        y: 0,
-      }, 0);
-  };
-});
+function toFrthView() {
+  gsap.timeline({})
+      .to(scene.fog, { duration: .5, near: 3 }, 0)
+      .to(helmetWrapper.position, { duration: 1, x: 0, y: 0 }, 0)
+      .to(camera.position, { duration: 1.4, z: 10, ease: "power1.inOut" }, 0)
+      .to(helmetWrapper.rotation, { duration: 1.5, x: 0, y: 0 }, 0);
+}
 
+// Loop through each element
+transitionElements4.forEach(element => element.onclick = toFrthView);
+
+  return { toFstView, toSndView, toTrdView, toFrthView}
 }
 
 export { myThree }
