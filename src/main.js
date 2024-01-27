@@ -11,6 +11,7 @@ import {navigation, brandClick} from "./navigation";
  */
 
 // Split type
+const { toFstView, toSndView, toTrdView, toFrthView } = myThree();
 
 function splitText() {
     if (typeof SplitType !== 'undefined') {
@@ -41,6 +42,7 @@ function animateText(selector, options) {
 //Home
 
 function homePageLoad() {
+    toFstView();
     animateText('.line', {
         yPercent: 100,
         ease: 'power1.out',
@@ -52,6 +54,7 @@ function homePageLoad() {
 // About
 
 function aboutPageLoad() {
+    toSndView();
     animateText('.line', {
         yPercent: 100,
         delay: 0.5,
@@ -63,6 +66,7 @@ function aboutPageLoad() {
 
 //Focus
 function focusPageLoad() {
+    toTrdView();
     $('.details_block').each(function () {
         gsap.from($(this).find('.line'), {
             yPercent: 100,
@@ -94,23 +98,24 @@ function prettyUrl() {
 //Team
 
 function teamPageLoad() {
-let teamLoad = gsap.timeline({})
+    toFrthView();
+    let teamLoad = gsap.timeline({})
 
-teamLoad.from('.line', {
-    yPercent: 100,
-    duration: 1,
-    stagger: 0.04,
-    ease: 'power1.out'
-})
-teamLoad.from('.swiper-slide', {
-    yPercent: 10,
-    stagger: {
-        each: 0.04,
-        from: 'left'
-    },
-    duration: 0.6,
-    ease: 'power1.out'
-},"<+=0.5")
+    teamLoad.from('.line', {
+        yPercent: 100,
+        duration: 1,
+        stagger: 0.04,
+        ease: 'power1.out'
+    })
+    teamLoad.from('.swiper-slide', {
+        yPercent: 10,
+        stagger: {
+            each: 0.04,
+            from: 'left'
+        },
+        duration: 0.6,
+        ease: 'power1.out'
+    },"<+=0.5")
 }
 
 // Barba JS
@@ -174,6 +179,28 @@ barba.init({
         enter() {
             teamPageLoad();
         }
+    },{
+        name: 'writing',
+        to: {
+            namespace: ['writing']
+        },
+        once() {
+            toFrthView();
+        },
+        enter() {
+            toFrthView();
+        }
+    },{
+        name: 'blog-template',
+        to: {
+            namespace: ['blog-template']
+        },
+        once() {
+            toFrthView();
+        },
+        enter() {
+            toFrthView();
+        }
     }],
     views: [{
         namespace: 'team',
@@ -198,7 +225,6 @@ barba.hooks.beforeEnter(() => {
 
 barba.hooks.once(() => {
     splitText();
-    myThree();
     navigation();
     brandClick();
     window.Webflow && window.Webflow.destroy();
