@@ -47,7 +47,7 @@ function myThree() {
     scene.add(staticLight);
 
     const staticLightCopy = new THREE.DirectionalLight(0xffffff, .7);
-    staticLightCopy.position.set(-15, -9, 10);
+    staticLightCopy.position.set(-15, -9, 60);
     staticLightCopy.castShadow = true;
     staticLightCopy.shadow.bias = .001;
     staticLightCopy.shadow.mapSize.width = 4096;
@@ -92,7 +92,7 @@ function myThree() {
 
     modelLoader.load(
         // HERE YOU NEED TO REPLACE THE PATH TO THE MODEL FILE
-        "https://uploads-ssl.webflow.com/653553673268205b9f99f650/6580b084e4ae5621de218603_helmet2.glb.txt",
+        "https://uploads-ssl.webflow.com/653553673268205b9f99f650/65ba7592d9db5e6e5fd5476f_helmet-v2.glb.txt",
         glb => {
             helmet = glb.scene;
             helmetWrapper.add(helmet);
@@ -103,7 +103,7 @@ function myThree() {
                     if (child.material.name === "metal") {
                         child.material.roughness = .2;
                         child.material.metalness = .9;
-                        child.material.normalMap = new THREE.TextureLoader().load("https://uploads-ssl.webflow.com/653553673268205b9f99f650/6580b0706b878ce2c4343293_normalMap.jpeg");
+                        child.material.normalMap = new THREE.TextureLoader().load("https://uploads-ssl.webflow.com/653553673268205b9f99f650/65ba7889748f5ce8961d6902_Diving%20Helmet%20Normal%20v2.jpg");
                         child.material.normalScale = new THREE.Vector2(.1, .1);
                         child.castShadow = true;
                     } else {
