@@ -92,7 +92,7 @@ function myThree() {
 
     modelLoader.load(
         // HERE YOU NEED TO REPLACE THE PATH TO THE MODEL FILE
-        "https://uploads-ssl.webflow.com/653553673268205b9f99f650/65ba7592d9db5e6e5fd5476f_helmet-v2.glb.txt",
+        "https://uploads-ssl.webflow.com/653553673268205b9f99f650/6580b084e4ae5621de218603_helmet2.glb.txt",
         glb => {
             helmet = glb.scene;
             helmetWrapper.add(helmet);
