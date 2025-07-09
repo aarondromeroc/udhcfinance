@@ -2,7 +2,6 @@ import gsap from "gsap";
 import barba from "@barba/core";
 import SplitType from "split-type";
 import * as THREE from "three";
-import { team } from "./team";
 import { myThree } from "./scene";
 import { navigation, brandClick } from "./navigation";
 
@@ -237,10 +236,16 @@ barba.init({
     {
       namespace: "team",
       once() {
-        team();
+        // Dynamic import for team module
+        import("./team").then(({ team }) => {
+          team();
+        });
       },
       beforeEnter() {
-        team();
+        // Dynamic import for team module
+        import("./team").then(({ team }) => {
+          team();
+        });
       },
     },
   ],
