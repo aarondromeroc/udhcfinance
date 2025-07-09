@@ -136,8 +136,20 @@ barba.init({
     if (element.tagName === "FORM") {
       return true;
     }
+    // Prevent Barba from handling form elements
+    if (element.closest("form")) {
+      return true;
+    }
     // Prevent Barba from handling elements with data-no-barba attribute
     if (element.hasAttribute("data-no-barba")) {
+      return true;
+    }
+    // Prevent Barba from handling submit buttons
+    if (element.type === "submit") {
+      return true;
+    }
+    // Prevent Barba from handling elements with data-barba-prevent attribute
+    if (element.hasAttribute("data-barba-prevent")) {
       return true;
     }
     return false;
@@ -269,9 +281,31 @@ barba.hooks.once(() => {
 document.addEventListener(
   "submit",
   function (e) {
-    // Allow form submission to proceed normally
-    // Barba will not interfere due to preventCustom configuration
-    console.log("Form submitted:", e.target);
+    // Prevent Barba from interfering with form submissions
+    e.stopPropagation();
+
+    // Allow the form to submit normally
+    const form = e.target;
+
+    // Log form submission for debugging
+    console.log("Form submitted:", form);
+    console.log("Form action:", form.action);
+    console.log("Form method:", form.method);
+
+    // Ensure the form can submit normally
+    // Don't prevent default - let the form submit as intended
+  },
+  true
+);
+
+// Additional form protection - prevent any click events on form elements from being intercepted
+document.addEventListener(
+  "click",
+  function (e) {
+    // If the clicked element is inside a form, prevent Barba from handling it
+    if (e.target.closest("form") || e.target.tagName === "FORM") {
+      e.stopPropagation();
+    }
   },
   true
 );
