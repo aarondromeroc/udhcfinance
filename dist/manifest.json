@@ -1,46 +1,7 @@
 {
   "src/main.js": {
-    "file": "assets/main.cd4cd659.js",
+    "file": "assets/main.production.js",
     "src": "src/main.js",
-    "isEntry": true,
-    "imports": [
-      "_gsap.ec5a945a.js",
-      "_barba.ef98abe3.js",
-      "_split-type.018694b3.js",
-      "_three.9c8e92ce.js"
-    ],
-    "dynamicImports": [
-      "src/team.js"
-    ]
-  },
-  "_three.9c8e92ce.js": {
-    "file": "assets/three.9c8e92ce.js"
-  },
-  "_gsap.ec5a945a.js": {
-    "file": "assets/gsap.ec5a945a.js"
-  },
-  "_barba.ef98abe3.js": {
-    "file": "assets/barba.ef98abe3.js"
-  },
-  "_swiper.f1124eb5.js": {
-    "file": "assets/swiper.f1124eb5.js"
-  },
-  "_split-type.018694b3.js": {
-    "file": "assets/split-type.018694b3.js"
-  },
-  "_vendor.e3bb175a.js": {
-    "file": "assets/vendor.e3bb175a.js"
-  },
-  "src/team.js": {
-    "file": "assets/team.75ac8c97.js",
-    "src": "src/team.js",
-    "isDynamicEntry": true,
-    "imports": [
-      "_swiper.f1124eb5.js",
-      "_gsap.ec5a945a.js"
-    ],
-    "css": [
-      "assets/team.8ab0f023.css"
-    ]
+    "isEntry": true
   }
 }
