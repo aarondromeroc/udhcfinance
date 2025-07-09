@@ -13,21 +13,18 @@ export default defineConfig({
     },
   },
   build: {
-    minify: "terser",
+    minify: true,
     manifest: true,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: "./src/main.js",
       output: {
-        format: "umd",
-        entryFileNames: "assets/main.production.js",
-        esModule: false,
-        compact: true,
-        globals: {
-          jquery: "$",
-        },
+        // format: "umd",
+        // esModule: false,
+        // compact: true,
+        // globals: { jquery: "$" },
       },
-      external: ["jquery"],
+      // external: ["jquery"],
     },
     terserOptions: {
       compress: {

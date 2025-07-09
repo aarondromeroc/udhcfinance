@@ -1,7 +1,10 @@
 {
   "src/main.js": {
-    "file": "assets/main.production.js",
+    "file": "assets/main.0f6382ac.js",
     "src": "src/main.js",
-    "isEntry": true
+    "isEntry": true,
+    "css": [
+      "assets/main.1a129b0e.css"
+    ]
   }
 }
