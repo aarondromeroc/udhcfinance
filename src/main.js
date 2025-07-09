@@ -167,6 +167,14 @@ barba.init({
       enter() {
         homePageLoad();
       },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      },
     },
     {
       name: "about",
@@ -179,6 +187,14 @@ barba.init({
       enter() {
         aboutPageLoad();
       },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      },
     },
     {
       name: "focus",
@@ -190,6 +206,14 @@ barba.init({
       },
       enter() {
         focusPageLoad();
+      },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
       },
     },
     {
@@ -207,6 +231,14 @@ barba.init({
       enter() {
         portfolioPageLoad();
       },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      },
     },
     {
       name: "team",
@@ -218,6 +250,14 @@ barba.init({
       },
       beforeEnter() {
         team();
+      },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
       },
     },
     {
@@ -231,6 +271,14 @@ barba.init({
       enter() {
         toFrthView();
       },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
+      },
     },
     {
       name: "blog-template",
@@ -242,6 +290,14 @@ barba.init({
       },
       enter() {
         toFrthView();
+      },
+      afterEnter() {
+        // Reinitialize Webflow scripts after page change
+        window.Webflow &&
+          window.Webflow.require &&
+          window.Webflow.require("ix2").init();
+        window.Webflow && window.Webflow.ready && window.Webflow.ready();
+        document.dispatchEvent(new Event("DOMContentLoaded"));
       },
     },
   ],
