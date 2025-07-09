@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import barba from "@barba/core";
 import SplitType from "split-type";
-import * as THREE from "three";
 import { team } from "./team";
 import { myThree } from "./scene";
 import { navigation, brandClick } from "./navigation";
@@ -27,11 +26,45 @@ function splitText() {
 }
 
 // Text animation
-
 function animateText(selector, options) {
   gsap.from(selector, {
     ...options,
   });
+}
+
+// Update copyright year function
+function updateCopyrightYear() {
+  $(".copyright-year").text(new Date().getFullYear());
+}
+
+// Reinitialize Webflow scripts function
+function reinitializeWebflowScripts(pageName) {
+  // Reinitialize IX2 interactions
+  if (window.Webflow && window.Webflow.require) {
+    window.Webflow.require("ix2").init();
+  }
+
+  // Comprehensive form reinitialization
+  setTimeout(() => {
+    if (window.Webflow && window.Webflow.require) {
+      const forms = window.Webflow.require("forms");
+      if (forms && forms.ready) {
+        forms.ready();
+      }
+
+      // Also try to reinitialize any existing forms
+      const existingForms = document.querySelectorAll("form.w-form");
+      existingForms.forEach((form) => {
+        if (form && typeof form.reset === "function") {
+          // Reset form state
+          form.reset();
+        }
+      });
+    }
+  }, 200);
+
+  // Trigger DOM events to ensure Webflow components are properly initialized
+  document.dispatchEvent(new Event("DOMContentLoaded"));
 }
 
 /**
@@ -39,7 +72,6 @@ function animateText(selector, options) {
  */
 
 //Home
-
 function homePageLoad() {
   toFstView();
   animateText(".line", {
@@ -51,7 +83,6 @@ function homePageLoad() {
 }
 
 // About
-
 function aboutPageLoad() {
   toSndView();
   animateText(".line", {
@@ -81,7 +112,6 @@ function focusPageLoad() {
 }
 
 //Portfolio
-
 function portfolioPageLoad(params) {
   gsap.from(".container.cc--portfolio", {
     yPercent: 50,
@@ -103,7 +133,6 @@ function prettyUrl() {
 }
 
 //Team
-
 function teamPageLoad() {
   toFrthView();
   let teamLoad = gsap.timeline({});
@@ -129,29 +158,13 @@ function teamPageLoad() {
   );
 }
 
-// Barba JS
+// Barba config: prevent Barba from handling forms
 barba.init({
   preventCustom: (href, element) => {
     // Prevent Barba from handling form submissions
-    if (element.tagName === "FORM") {
-      return true;
-    }
-    // Prevent Barba from handling form elements
-    if (element.closest("form")) {
-      return true;
-    }
-    // Prevent Barba from handling elements with data-no-barba attribute
-    if (element.hasAttribute("data-no-barba")) {
-      return true;
-    }
-    // Prevent Barba from handling submit buttons
-    if (element.type === "submit") {
-      return true;
-    }
-    // Prevent Barba from handling elements with data-barba-prevent attribute
-    if (element.hasAttribute("data-barba-prevent")) {
-      return true;
-    }
+    if (element.tagName === "FORM") return true;
+    // Prevent Barba from handling elements with data-no-barba attribute (optional)
+    if (element.hasAttribute("data-no-barba")) return true;
     return false;
   },
   preventRunning: true,
@@ -168,12 +181,7 @@ barba.init({
         homePageLoad();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("home");
       },
     },
     {
@@ -188,12 +196,7 @@ barba.init({
         aboutPageLoad();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("about");
       },
     },
     {
@@ -208,12 +211,7 @@ barba.init({
         focusPageLoad();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("focus");
       },
     },
     {
@@ -232,12 +230,7 @@ barba.init({
         portfolioPageLoad();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("portfolio");
       },
     },
     {
@@ -252,12 +245,7 @@ barba.init({
         team();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("team");
       },
     },
     {
@@ -272,12 +260,7 @@ barba.init({
         toFrthView();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("writing");
       },
     },
     {
@@ -292,12 +275,24 @@ barba.init({
         toFrthView();
       },
       afterEnter() {
-        // Reinitialize Webflow scripts after page change
-        window.Webflow &&
-          window.Webflow.require &&
-          window.Webflow.require("ix2").init();
-        window.Webflow && window.Webflow.ready && window.Webflow.ready();
-        document.dispatchEvent(new Event("DOMContentLoaded"));
+        reinitializeWebflowScripts("blog-template");
+      },
+    },
+    {
+      name: "contact",
+      to: {
+        namespace: ["contact"],
+      },
+      once() {
+        toFrthView();
+        updateCopyrightYear();
+      },
+      enter() {
+        updateCopyrightYear();
+        toFrthView();
+      },
+      afterEnter() {
+        reinitializeWebflowScripts("contact");
       },
     },
   ],
@@ -314,54 +309,45 @@ barba.init({
   ],
 });
 
-//Global functions
+// Re-initialize Webflow scripts after each Barba transition
 barba.hooks.beforeEnter(() => {
-  splitText();
-  window.Webflow && window.Webflow.destroy();
-  window.Webflow && window.Webflow.ready();
-  window.Webflow && window.Webflow.require("ix2").init();
-  document.dispatchEvent(new Event("readystatechange"));
-});
+  // If you use SplitType or other custom scripts, re-run them here
+  // splitText();
 
-barba.hooks.once(() => {
-  splitText();
-  navigation();
-  brandClick();
-  window.Webflow && window.Webflow.destroy();
-  window.Webflow && window.Webflow.ready();
-  window.Webflow && window.Webflow.require("ix2").init();
-  document.dispatchEvent(new Event("readystatechange"));
-});
-
-// Form submission handler to ensure forms work with Barba
-document.addEventListener(
-  "submit",
-  function (e) {
-    // Prevent Barba from interfering with form submissions
-    e.stopPropagation();
-
-    // Allow the form to submit normally
-    const form = e.target;
-
-    // Log form submission for debugging
-    console.log("Form submitted:", form);
-    console.log("Form action:", form.action);
-    console.log("Form method:", form.method);
-
-    // Ensure the form can submit normally
-    // Don't prevent default - let the form submit as intended
-  },
-  true
-);
-
-// Additional form protection - prevent any click events on form elements from being intercepted
-document.addEventListener(
-  "click",
-  function (e) {
-    // If the clicked element is inside a form, prevent Barba from handling it
-    if (e.target.closest("form") || e.target.tagName === "FORM") {
-      e.stopPropagation();
+  // Re-initialize Webflow interactions and forms
+  if (window.Webflow) {
+    if (window.Webflow.destroy) window.Webflow.destroy();
+    if (window.Webflow.ready) window.Webflow.ready();
+    if (window.Webflow.require) {
+      try {
+        window.Webflow.require("ix2").init();
+        const forms = window.Webflow.require("forms");
+        if (forms && forms.ready) forms.ready();
+      } catch (e) {
+        // Ignore errors if not present
+      }
     }
-  },
-  true
-);
+  }
+  document.dispatchEvent(new Event("readystatechange"));
+});
+
+// Optional: On first load, re-initialize as well
+barba.hooks.once(() => {
+  // splitText();
+  // navigation();
+  // brandClick();
+  if (window.Webflow) {
+    if (window.Webflow.destroy) window.Webflow.destroy();
+    if (window.Webflow.ready) window.Webflow.ready();
+    if (window.Webflow.require) {
+      try {
+        window.Webflow.require("ix2").init();
+        const forms = window.Webflow.require("forms");
+        if (forms && forms.ready) forms.ready();
+      } catch (e) {}
+    }
+  }
+  document.dispatchEvent(new Event("readystatechange"));
+});
+
+// No need to add any submit event listeners for forms!
